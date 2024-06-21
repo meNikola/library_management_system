@@ -27,3 +27,7 @@ DB_DATABASE=library_management_system
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+
+## Notes
+I added the documentation in the `documentation` folder, and the files are in `JSON` format. I wanted to use `scribe`, but I didn't have time.
+I configured error rendering in the `Handler.php` file. I created a Trait `ApiResponse` that formats the response.
