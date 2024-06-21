@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "40ff8756-ecbf-4fb6-952d-45db36e30efe",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33687523"
+	},
+	"item": [
+		{
+			"name": "GET Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				},
+				"description": "# Retrieve Users\n\nThis endpoint makes an HTTP GET request to retrieve a list of users from the server.\n\n## Request\n\nThe request does not require a request body. It simply makes a GET request to the server endpoint `localhost:8000/api/v1/users`.\n\n## Response\n\nThe response will be a JSON object representing the list of users. The JSON schema for the response will include the properties and data types for the user information.\n\nExample response schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"users\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\"\n          },\n          \"username\": {\n            \"type\": \"string\"\n          },\n          \"email\": {\n            \"type\": \"string\"\n          },\n          \"createdAt\": {\n            \"type\": \"string\",\n            \"format\": \"date-time\"\n          }\n        }\n      }\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "GET User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				},
+				"description": "# Get User Details\n\nThis endpoint retrieves the details of a specific user with the provided user ID.\n\n## Request\n\n### Request URL\n\n- Method: GET\n- URL: `localhost:8000/api/v1/users/1`\n    \n\n## Response\n\nUpon a successful request, the server will respond with the following details of the user:\n\n- User ID\n- Username\n- Email\n- Profile Picture URL\n    \n\nIf the user ID is not found, the server will respond with a 404 Not Found error."
+			},
+			"response": []
+		},
+		{
+			"name": "POST User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Member\",\r\n            \"email\": \"memeber@member.com\",\r\n            \"password\": \"password\"\r\n        },\r\n        \"relationships\": {\r\n            \"role\": {\r\n                \"data\": {\r\n                    \"id\": 2\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				},
+				"description": "### Add User\n\nThis endpoint allows you to add a new user.\n\n#### Request Body\n\n- `name` (string, required): The name of the user.\n- `email` (string, required): The email address of the user.\n- `password` (string, required): The password for the user.\n- `role` (integer, required): The ID of the user's role.\n    \n\nExample:\n\n``` json\n{\n  \"data\": {\n    \"attributes\": {\n      \"name\": \"\",\n      \"email\": \"\",\n      \"password\": \"\"\n    },\n    \"relationships\": {\n      \"role\": {\n        \"data\": {\n          \"id\": 0\n        }\n      }\n    }\n  }\n}\n\n ```\n\n#### Response\n\nThe response will contain the details of the newly added user."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Member\",\r\n            \"email\": \"memeber@member.com\",\r\n            \"password\": \"password\"\r\n        },\r\n        \"relationships\": {\r\n            \"role\": {\r\n                \"data\": {\r\n                    \"id\": 2\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				},
+				"description": "### Update User Details\n\nThis endpoint is used to update the details of a specific user.\n\n#### Request Body\n\n- `name` (string, required): The updated name of the user.\n- `email` (string, required): The updated email of the user.\n- `password` (string, required): The updated password of the user.\n- `role_id` (integer, required): The ID of the user's role.\n    \n\n#### Response\n\nThe response for this request is a JSON object conforming to the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Member\",\r\n            \"email\": \"memeber@member.com\",\r\n            \"password\": \"password\"\r\n        },\r\n        \"relationships\": {\r\n            \"role\": {\r\n                \"data\": {\r\n                    \"id\": 2\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				},
+				"description": "# Delete User\n\nThis endpoint is used to delete a specific user from the system.\n\n## Request\n\n- Method: DELETE\n- URL: `localhost:8000/api/v1/users/7`\n- Body:\n    - data (object)\n        - attributes (object)\n            - name (string): The name of the user.\n            - email (string): The email of the user.\n            - password (string): The password of the user.\n        - relationships (object)\n            - role (object)\n                - data (object)\n                    - id (number): The ID of the role associated with the user.\n\n## Response\n\nThe response will not include a body, but will return a status code to indicate the success or failure of the deletion operation."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "1|3AJmSAgGc8ixM036pPSQk05YDQPf1lC4oKxeIZ28df0f24c4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

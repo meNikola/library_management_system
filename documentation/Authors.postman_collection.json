@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "eb8d6505-0967-486d-a4fc-e6f78c3f1045",
+		"name": "Authors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33687523"
+	},
+	"item": [
+		{
+			"name": "Get Authors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/authors",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors"
+					]
+				},
+				"description": "# Get Authors\n\nThis endpoint retrieves a list of authors.\n\n## Request\n\n- Method: GET\n- URL: `localhost:8000/api/v1/authors`\n    \n\n## Response\n\nThe response for this request is a JSON object containing an array of author objects. The schema for the response can be documented as follows:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"authors\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\"\n          },\n          \"name\": {\n            \"type\": \"string\"\n          },\n          \"books\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"string\"\n            }\n          }\n        }\n      }\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/authors/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"2"
+					]
+				},
+				"description": "# Get Author Details\n\nThis endpoint retrieves the details of a specific author.\n\n## Request\n\n### Request URL\n\n- `GET /api/v1/authors/2`\n    \n\n## Response\n\nThe response for this request can be represented as a JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"integer\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"books\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"integer\"\n          },\n          \"title\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Third Author\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/authors",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors"
+					]
+				},
+				"description": "### Create New Author\n\nThis endpoint allows you to create a new author.\n\n#### Request Body\n\n- data (object)\n    - attributes (object)\n        - name (string, required): The name of the author.\n\n#### Response\n\nThe response will contain the newly created author's details."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"First Author\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/authors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"1"
+					]
+				},
+				"description": "### Update Author Details\n\nThis endpoint is used to update the details of a specific author.\n\n#### Request Body\n\n- `name` (string, required): The updated name of the author.\n    \n\nExample:\n\n``` json\n{\n  \"data\": {\n    \"attributes\": {\n      \"name\": \"Updated Author Name\"\n    }\n  }\n}\n\n ```\n\n#### Response\n\nThe response will include the updated details of the author."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/authors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors",
+						"1"
+					]
+				},
+				"description": "### Delete Author\n\nThis endpoint is used to delete a specific author from the system.\n\n#### Request\n\n- Method: DELETE\n- URL: `localhost:8000/api/v1/authors/1`\n- Description: This request deletes the author with the specified ID.\n    \n\n#### Response\n\nThe response for this request is a JSON schema describing the structure of the response body."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

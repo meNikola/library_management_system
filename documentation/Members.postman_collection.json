@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "6ff8b073-c108-45ce-84d9-c5e38c2ae1ed",
+		"name": "Members",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33687523"
+	},
+	"item": [
+		{
+			"name": "GET Members",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/members",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"members"
+					]
+				},
+				"description": "### Get Members\n\nThis endpoint makes an HTTP GET request to fetch a list of members from the server.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\nThe response will include an array of member objects, each containing details such as member ID, name, email, and role."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Member",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/members/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"members",
+						"2"
+					]
+				},
+				"description": "# Get Member Details\n\nThis endpoint retrieves the details of a specific member by their ID.\n\n## Request\n\n### Request URL\n\n- Method: GET\n- URL: `localhost:8000/api/v1/members/2`\n    \n\n## Response\n\nUpon a successful request, the server will respond with the following details about the member:\n\n- `id`: The unique identifier of the member.\n- `name`: The name of the member.\n- `email`: The email address of the member.\n- `status`: The current status of the member.\n    \n\nIf the member with the specified ID is not found, an empty response will be returned."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Members",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Member Second\",\r\n            \"email\": \"memeber_second@member.com\",\r\n            \"password\": \"password\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/members",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"members"
+					]
+				},
+				"description": "### Create a New Member\n\nThis endpoint allows you to create a new member by sending a POST request to the specified URL.\n\n#### Request Body\n\n- data (object)\n    - attributes (object)\n        - name (string, required): The name of the member.\n        - email (string, required): The email address of the member.\n        - password (string, required): The password for the member's account.\n\n#### Response\n\nThe response will contain the details of the newly created member."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

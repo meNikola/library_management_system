@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "b0ef63ef-7f92-4ae4-8441-a77c90278dc1",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33687523"
+	},
+	"item": [
+		{
+			"name": "Login Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "memeber@member.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "\n### Login API\n\nThis API endpoint is used to authenticate a user and obtain an access token for further API calls.\n\n#### Request Body\n- `email` (text): The email address of the user.\n- `password` (text): The password of the user.\n\n#### Response\nThe response will include the user's authentication token upon successful login.\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Registration Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"name\": \"Member\",\r\n            \"email\": \"memeber@member.com\",\r\n            \"password\": \"password\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "### Register User\n\nThis endpoint is used to register a new user.\n\n**Request Body**\n\n- data (object)\n    - attributes (object)\n        - name (string, required): The name of the user.\n        - email (string, required): The email address of the user.\n        - password (string, required): The password for the user account.\n\n**Response**  \nThe response of this request is a JSON object conforming to the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "### Logout\n\nThis endpoint is used to log out the user from the system.\n\n#### Request Body\n\n- No request body is required for this endpoint.\n    \n\n#### Response\n\n- The response will indicate the success or failure of the logout operation."
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "f197b716-078d-4d76-b4f5-234ff36bb703",
+		"name": "Reservations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33687523"
+	},
+	"item": [
+		{
+			"name": "GET Reservations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/reservations",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservations"
+					]
+				},
+				"description": "### Get Reservations\n\nThis endpoint makes an HTTP GET request to localhost:8000/api/v1/reservations to retrieve a list of reservations.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- `reservations`: An array of reservation objects containing details such as reservation ID, guest name, check-in date, check-out date, and room details.\n    \n\nExample:\n\n``` json\n{\n    \"reservations\": [\n        {\n            \"id\": \"123\",\n            \"guestName\": \"John Doe\",\n            \"checkInDate\": \"2022-10-01\",\n            \"checkOutDate\": \"2022-10-05\",\n            \"roomDetails\": \"Deluxe Room\"\n        },\n        {\n            \"id\": \"124\",\n            \"guestName\": \"Jane Smith\",\n            \"checkInDate\": \"2022-11-15\",\n            \"checkOutDate\": \"2022-11-20\",\n            \"roomDetails\": \"Suite\"\n        }\n    ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/reservations/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservations",
+						"1"
+					]
+				},
+				"description": "# Get Reservation Details\n\nThis endpoint retrieves the details of a specific reservation.\n\n## Request\n\n### Request URL\n\n```\nGET localhost:8000/api/v1/reservations/1\n\n ```\n\n## Response\n\nThe response will include the details of the reservation, such as reservation ID, guest name, check-in date, check-out date, room type, and any additional notes."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Reservation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"attributes\": {\r\n            \"member_id\": 2,\r\n            \"book_ids\": [\r\n                1\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/reservations",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"reservations"
+					]
+				},
+				"description": "### Add Reservation\n\nThis endpoint allows you to add a new reservation.\n\n#### Request Body\n\n- `member_id` (integer) - The ID of the member making the reservation.\n- `book_ids` (array of integers) - The IDs of the books being reserved.\n    \n\nExample:\n\n``` json\n{\n  \"data\": {\n    \"attributes\": {\n      \"member_id\": 0,\n      \"book_ids\": [0]\n    }\n  }\n}\n\n ```\n\n#### Response\n\nThe response will include the details of the newly added reservation."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BEARER}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
